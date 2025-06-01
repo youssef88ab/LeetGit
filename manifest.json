@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "LeetCode to GitHub Auto-Push",
+    "version": "1.0",
+    "description": "Automatically push your LeetCode solutions to GitHub repository",
+    "permissions": [
+      "storage",
+      "identity",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "https://leetcode.com/*",
+      "https://github.com/*",
+      "https://api.github.com/*",
+      "http://localhost:3000/*"
+    ],
+    "oauth2": {
+      "client_id": "Ov23ligtMOvpKHIt98Io",
+      "scopes": ["repo", "user:email"]
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://leetcode.com/*"],
+        "js": ["contentScript.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "LeetCode GitHub Push",
+      "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+    }
+  }

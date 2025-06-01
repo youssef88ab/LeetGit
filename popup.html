@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .header p {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+        }
+        
+        .section h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #24292e;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-dot.connected {
+            background-color: #28a745;
+        }
+        
+        .status-dot.disconnected {
+            background-color: #dc3545;
+        }
+        
+        button {
+            background-color: #0366d6;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #0256cc;
+        }
+        
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        
+        .user-info {
+            font-size: 12px;
+            color: #586069;
+            margin-bottom: 10px;
+        }
+        
+        .error {
+            color: #dc3545;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+        
+        .success {
+            color: #28a745;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 LeetCode → GitHub</h1>
+        <p>Auto-push your solutions to GitHub</p>
+    </div>
+
+    <!-- GitHub Authentication Section -->
+    <div class="section">
+        <h3>GitHub Authentication</h3>
+        <div class="status">
+            <div class="status-dot" id="authStatusDot"></div>
+            <span id="authStatus">Not connected</span>
+        </div>
+        <div id="userInfo" class="user-info hidden"></div>
+        <button id="loginBtn">Login with GitHub</button>
+        <button id="logoutBtn" class="hidden">Logout</button>
+        <div id="authError" class="error hidden"></div>
+    </div>
+
+    <!-- Repository Configuration Section -->
+    <div class="section">
+        <h3>Repository Configuration</h3>
+        <div class="status">
+            <div class="status-dot" id="repoStatusDot"></div>
+            <span id="repoStatus">Not configured</span>
+        </div>
+        <input 
+            type="text" 
+            id="repoUrl" 
+            placeholder="https://github.com/username/leetcode-solutions"
+            title="Enter your GitHub repository URL where solutions will be pushed"
+        >
+        <button id="saveRepoBtn">Save Repository</button>
+        <div id="repoError" class="error hidden"></div>
+        <div id="repoSuccess" class="success hidden"></div>
+    </div>
+
+    <!-- Status Section -->
+    <div class="section">
+        <h3>Extension Status</h3>
+        <div id="extensionStatus">
+            Ready to capture LeetCode solutions! 🎯
+        </div>
+        <div style="font-size: 11px; color: #586069; margin-top: 10px;">
+            <strong>How it works:</strong><br>
+            1. Login with GitHub<br>
+            2. Set your repository URL<br>
+            3. Submit solutions on LeetCode<br>
+            4. Solutions auto-push to GitHub! ✨
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
